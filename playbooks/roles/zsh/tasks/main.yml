@@ -1,0 +1,23 @@
+---
+- name: Install default programs
+  dnf:
+    name: 
+      - zsh
+    state: latest
+
+- name: Verify if oh-my-zsh folder is present
+  become: no
+  stat:
+    path: "~/.oh-my-zsh"
+  register: zsh_folder      
+
+- name: Install Oh-My-Zsh
+  become: no
+  shell: "printf \\'%s\\n\\' y | sh -c \"$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" "
+  when: not zsh_folder.stat.exists       
+
+- name: Change User Shell to Zsh 
+  become: yes
+  user:
+    name: "{{ansible_user}}"
+    shell: /bin/zsh

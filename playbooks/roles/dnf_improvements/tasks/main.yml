@@ -1,0 +1,13 @@
+---
+- name: Update dnf.conf
+  lineinfile:
+    dest: /etc/dnf/dnf.conf
+    line: "fastestmirror=1"
+    state: present
+    insertafter: EOF
+- name: Update dnf.conf
+  lineinfile:
+    dest: /etc/dnf/dnf.conf
+    line: "max_parallel_downloads=15"
+    state: present
+    insertafter: EOF    

@@ -1,0 +1,8 @@
+---
+- name: Install default programs
+  dnf:
+    name: 
+      - htop
+      - nano
+      - git
+    state: latest

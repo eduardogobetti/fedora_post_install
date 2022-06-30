@@ -1,0 +1,10 @@
+---
+- name: Enable Fedora Copr
+  community.general.copr:
+    name: elxreno/preload
+
+- name: Install preload
+  dnf:
+    name:
+      - preload
+    state: latest
