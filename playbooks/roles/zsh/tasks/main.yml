@@ -19,5 +19,5 @@
 - name: Change User Shell to Zsh 
   become: yes
   user:
-    name: "{{ansible_user}}"
+    name: "{{ lookup('env', 'USER') }}"
     shell: /bin/zsh

@@ -1,8 +1,7 @@
 ---
 - hosts:
-    - 127.0.0.1
+    - local
   connection: local
-  gather_facts: False    
   become: yes
   roles:
     - dnf_improvements
